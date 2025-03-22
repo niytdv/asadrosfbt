@@ -1,24 +1,26 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import AddBus from "./pages/AddBus";
+import React, { useState, useEffect } from "react";
 
-function App() {
+const BusList = () => {
+  const [buses, setBuses] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/buses")  // Ensure this matches your backend
+      .then((res) => res.json())
+      .then((data) => setBuses(data)) // Update the state with the fetched buses
+      .catch((error) => console.error("Error fetching buses:", error));
+  }, []);  // Empty dependency array ensures it runs once when the component loads
+
   return (
-    <Router>
-      <div className="container mt-4">
-        <nav className="navbar navbar-light bg-light">
-          <Link to="/" className="navbar-brand">Bus Scheduler</Link>
-          <Link to="/add-bus" className="btn btn-primary">Add Bus</Link>
-        </nav>
-        
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/add-bus" element={<AddBus />} />
-        </Routes>
-      </div>
-    </Router>
+    <div>
+      <h2>Search Bus Routes</h2>
+      <input type="text" placeholder="Search for a bus route..." />
+      {buses.map((bus) => (
+        <div key={bus.id}>
+          {bus.route} - {bus.time}
+        </div>
+      ))}
+    </div>
   );
-}
+};
 
-export default App;
+export default BusList;

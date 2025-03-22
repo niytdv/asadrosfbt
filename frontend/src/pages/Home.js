@@ -5,34 +5,44 @@ function Home() {
   const [search, setSearch] = useState("");
   const [buses, setBuses] = useState([]);
 
-  // Fetch buses from backend
+  // Fetch data from backend
   useEffect(() => {
     axios.get("http://localhost:5000/buses")
-      .then((response) => setBuses(response.data))
-      .catch((error) => console.error("Error fetching buses:", error));
+      .then((res) => {
+        setBuses(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching bus data:", err);
+      });
   }, []);
 
-  const filteredBuses = buses.filter(bus =>
+  // Filter based on search query
+  const filteredBuses = buses.filter((bus) =>
     bus.route.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div>
-      <h2>Search Bus Routes</h2>
+      <h2 className="mb-3">Search Bus Routes</h2>
       <input
         type="text"
-        className="form-control"
-        placeholder="Search for a bus route..."
+        className="form-control mb-3"
+        placeholder="Type to search (e.g. Pune, Mumbai...)"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <ul className="list-group mt-3">
-        {filteredBuses.map(bus => (
-          <li key={bus.id} className="list-group-item">
-            {bus.route} - {bus.time}
-          </li>
-        ))}
-      </ul>
+
+      {filteredBuses.length === 0 ? (
+        <p>No buses found.</p>
+      ) : (
+        <ul className="list-group">
+          {filteredBuses.map((bus) => (
+            <li key={bus.id} className="list-group-item">
+              <strong>{bus.route}</strong> — {bus.time}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

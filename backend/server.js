@@ -39,8 +39,16 @@ app.get("/getBuses", async (req, res) => {
 
 // Dummy Data for Testing
 let buses = [
-  { id: 1, route: "Delhi - Mumbai", time: "10:00 AM" },
-  { id: 2, route: "Chennai - Kolkata", time: "1:00 PM" },
+  { id: 1, route: "Pune - Mumbai", time: "10:00 AM" },
+  { id: 2, route: "Pune - Aurangabad", time: "1:00 PM" },
+  { id: 3, route: "Pune - Nagpur", time: "10:00 AM" },
+  { id: 4, route: "Pune - Nashik", time: "1:00 PM" },
+  { id: 5, route: "Pune - Kalyan", time: "10:00 AM" },
+  { id: 6, route: "Pune - Kolhapur", time: "1:00 PM" },
+  { id: 7, route: "Pune - Nanded", time: "10:00 AM" },
+  { id: 8, route: "Pune - Ahmednagar", time: "1:00 PM" },
+  { id: 9, route: "Pune - Jalna", time: "10:00 AM" },
+  { id: 10, route: "Pune - Beed", time: "1:00 PM" },
 ];
 
 // Get all buses
