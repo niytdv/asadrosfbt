@@ -1,38 +1,136 @@
+/* Apply background color to the entire page */
+body, html {
+  background-color: #183B4E !important; /* Dark blue background */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Ensure .App takes full height */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #183B4E; /* Dark background */
+  min-height: 100vh;  /* Ensures it covers full screen */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-family: "Poppins", sans-serif;
+}
+
+/* Remove white background from container */
+.container {
+  background: transparent; /* Remove white */
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: none; /* Remove shadow if necessary */
+  margin: auto;
+}
+
+/* Style the search box */
+.search-box {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #007bff;
+  border-radius: 20px;
+  outline: none;
+  text-indent: 10px;
+  background: white; /* Keep input readable */
+  color: black;
+}
+
+/* Ensure bus items are styled properly */
+.bus-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #5a80ae; /* Dark blue card */
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: rgb(149, 18, 18); /* White text for contrast */
+}
+
+/* 🔹 Overall Container */
+.container {
+  width: 50%;
+  margin: 50px auto;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  background-color: #183b4e; /* 🔹 Dark background */
+  padding: 20px;
+  border-radius: 12px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* 🔹 Heading */
+.heading {
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 🔹 Search Input */
+.searchBox {
+  width: 80%;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 25px;
+  border: 2px solid #007bff;
+  border-radius: 25px;
+  outline: none;
+  text-align: center;
+  background: #ffffff;
+  color: #000;
+}
+
+/* 🔹 Bus List */
+.busList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+/* 🔹 Bus Item Card */
+.busItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #27548a;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s ease-in-out;
+  color: white;
+}
+
+/* 🔹 Hover Effect */
+.busItem:hover {
+  transform: scale(1.02);
+}
+
+/* 🔹 Route Name */
+.route {
+  font-size: 18px;
+  font-weight: bold;
+  color: #f0f8ff;
+}
+
+/* 🔹 Time Display */
+.time {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* 🔹 No Results Message */
+.noResults {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
 }
